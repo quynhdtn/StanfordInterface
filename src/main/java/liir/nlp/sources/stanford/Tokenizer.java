@@ -12,13 +12,21 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import liir.nlp.representation.Text;
 import liir.nlp.representation.Word;
 
 /**
  * Created by quynhdo on 28/08/15.
  */
-public class Tokenizer {
+public class Tokenizer extends liir.nlp.interfaces.preprocessing.Tokenizer {
 
+
+    public  Tokenizer(){
+
+        setName("Stanford Tokenizer");
+
+    }
+    /*
     public static List<Word> processs(String str){
         Reader reader = new StringReader(str);
         PTBTokenizer<CoreLabel> ptbt = new PTBTokenizer(reader,
@@ -60,6 +68,23 @@ public class Tokenizer {
         return sb.toString();
     }
 
+    */
+
+    @Override
+    public String[] process(String str) {
+        Reader reader = new StringReader(str);
+        PTBTokenizer<CoreLabel> ptbt = new PTBTokenizer(reader,
+                new CoreLabelTokenFactory(), "");
+        ArrayList<String> arr=new ArrayList<String>();
+
+        while (ptbt.hasNext()) {
+            CoreLabel label = ptbt.next();
+
+            arr.add(label.toString());
+
+        }
 
 
+        return  arr.toArray(new String[arr.size()]);
+    }
 }

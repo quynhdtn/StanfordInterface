@@ -11,6 +11,7 @@ import liir.nlp.representation.Word;
 
 import java.io.Reader;
 import java.io.StringReader;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.regex.Pattern;
 /**
  * Created by quynhdo on 28/08/15.
  */
-public class SentenceSplitter {
+public class SentenceSplitter extends liir.nlp.interfaces.preprocessing.SentenceSplitter{
 
     private final Set<String> sentDelims;
     private final Set<String> delimFollowers;
@@ -32,6 +33,8 @@ public class SentenceSplitter {
     public static final String NEWLINE_TOKEN = "*NL*";
 
     public SentenceSplitter() {
+
+        setName("Stanford Sentence Splitter");
         boolean eolIsSignificant = false;
         sentDelims = Generics.newHashSet();
         if (sentenceDelimiter == null) {
@@ -55,7 +58,7 @@ public class SentenceSplitter {
         this.sentenceFinalPuncWords = sentenceFinalPuncWords;
     }
 
-    public  List<String[]> processs(String[] tokens){
+    public  List<String[]> process(String[] tokens){
         List <String[]> sentenceList = new ArrayList<String[]>();
 
         boolean seenBoundary = false;
@@ -87,10 +90,14 @@ public class SentenceSplitter {
             current_sentence.toArray(arr);
             sentenceList.add(arr);
         }
+
+
+
         return sentenceList;
     }
 
 
+    /*
     // both tokenizer and sentence splitter
     public static List<String[]> processs(String text){
         Reader reader = new StringReader(text);
@@ -107,7 +114,8 @@ public class SentenceSplitter {
         return sentenceList;
     }
 
-
+*/
+    /*
     public static String processsToXML(String text){
         Reader reader = new StringReader(text);
         DocumentPreprocessor processor= new DocumentPreprocessor(reader);
@@ -127,7 +135,8 @@ public class SentenceSplitter {
         return txt.toXMLString();
     }
 
-
+*/
+    /*
     public Text process(List<Word> words) throws  Exception{
         List <Sentence> sentenceList = new ArrayList<Sentence>();
 
@@ -172,15 +181,26 @@ public class SentenceSplitter {
 
     }
 
-    public static  void main(String[] args) throws Exception{
-        String str="Mary loves Peter. Dogs love us";
-        List<Word> lst = Tokenizer.processs(str);
+*/
+    /*
+    @Override
+    public String[] process(String text) {
+        Reader reader = new StringReader(text);
+        DocumentPreprocessor processor= new DocumentPreprocessor(reader);
+        ArrayList<String> sens=new ArrayList<>();
 
-        SentenceSplitter sp =new SentenceSplitter();
-        Text t = sp.process(lst);
-        t.setAutomaticIndexing();
-        System.out.print(t.toXMLString());
+        for (List<HasWord> sentence : processor) {
+            String[] words = new String[sentence.size()];
+            Sentence se = new Sentence();
+            for (int i = 0; i< words.length; i++){
+                Word w = new Word();
+                w.setStr(sentence.get(i).toString());
+                se.add(w);
+            }
+            txt.add(se);
+        }
 
+        return txt.toXMLString();
     }
-
+    */
 }
