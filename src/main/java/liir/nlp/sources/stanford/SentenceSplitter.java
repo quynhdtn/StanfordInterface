@@ -1,17 +1,8 @@
 package liir.nlp.sources.stanford;
 
 
-import edu.stanford.nlp.ling.HasWord;
-import edu.stanford.nlp.process.DocumentPreprocessor;
-import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 import edu.stanford.nlp.util.Generics;
-import liir.nlp.representation.Sentence;
-import liir.nlp.representation.Text;
-import liir.nlp.representation.Word;
 
-import java.io.Reader;
-import java.io.StringReader;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

@@ -1,4 +1,4 @@
-import liir.nlp.representation.Text;
+import liir.nlp.core.representation.Text;
 import liir.nlp.sources.stanford.SentenceSplitter;
 import liir.nlp.sources.stanford.Tokenizer;
 

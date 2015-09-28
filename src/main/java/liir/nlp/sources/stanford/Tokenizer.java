@@ -7,13 +7,6 @@ import edu.stanford.nlp.process.PTBTokenizer;
 import java.io.Reader;
 import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.List;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-import liir.nlp.representation.Text;
-import liir.nlp.representation.Word;
 
 /**
  * Created by quynhdo on 28/08/15.
